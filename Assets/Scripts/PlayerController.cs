@@ -5,8 +5,9 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public Animator animator;
 
+    public Animator animator;
+    public ScoreController scorecontroller;
     public float speed;
     public float jump;
 
@@ -26,6 +27,7 @@ public class PlayerController : MonoBehaviour
     public void PickUpKey()
     {
         Debug.Log("Player picked up the key");
+        scorecontroller.IncreaseScore(10);
     }
 
     // Start is called before the first frame update
