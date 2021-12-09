@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -20,6 +21,11 @@ public class PlayerController : MonoBehaviour
         rBody = gameObject.GetComponent<Rigidbody2D>();
         gameObject.GetComponent<SpriteRenderer>();
         boxCollider2D = gameObject.GetComponent<BoxCollider2D>();
+    }
+
+    public void PickUpKey()
+    {
+        Debug.Log("Player picked up the key");
     }
 
     // Start is called before the first frame update
