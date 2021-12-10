@@ -15,7 +15,12 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private LayerMask platformMask;
     private Rigidbody2D rBody;
-    private BoxCollider2D boxCollider2D; 
+    private BoxCollider2D boxCollider2D;
+
+    public void KillPlayer()
+    {
+        Debug.Log("Player killed by enemy");
+    }
 
     private void Awake()
     {
