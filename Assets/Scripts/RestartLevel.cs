@@ -11,7 +11,7 @@ public class RestartLevel : MonoBehaviour
         if (collision.gameObject.GetComponent<PlayerController>() != null)
         {
             Debug.Log("Player is Dead");
-            Debug.Log("Restart Level..........");
+            Debug.Log("Restarting Level..........");
             SceneManager.LoadScene("NewScene");
         }
     }

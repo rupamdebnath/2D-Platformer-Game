@@ -1,25 +1,52 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
-    public Animator animator;
 
+    public Animator animator;
+    public ScoreController scorecontroller;
     public float speed;
     public float jump;
+    private int health = 3;
 
     public bool isGrounded = false;
 
     [SerializeField] private LayerMask platformMask;
     private Rigidbody2D rBody;
-    private BoxCollider2D boxCollider2D; 
+    private BoxCollider2D boxCollider2D;
+
+    private GameObject life;
+    public void KillPlayer()
+    {
+        Debug.Log("Player attacked by enemy");
+
+        //Destroy player object and play death animation
+        //reset the level
+        GameObject.Find("Life" + health).SetActive(false);
+        health--;
+        if (health == 0)
+        {
+            Debug.Log("Player killed by enemy");
+            //play death animation and restart level
+            SceneManager.LoadScene("NewScene");
+        }
+    }
 
     private void Awake()
     {
         rBody = gameObject.GetComponent<Rigidbody2D>();
         gameObject.GetComponent<SpriteRenderer>();
         boxCollider2D = gameObject.GetComponent<BoxCollider2D>();
+    }
+
+    public void PickUpKey()
+    {
+        Debug.Log("Player picked up the key");
+        scorecontroller.IncreaseScore(10);
     }
 
     // Start is called before the first frame update
