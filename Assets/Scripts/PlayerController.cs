@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class PlayerController : MonoBehaviour
     public ScoreController scorecontroller;
     public float speed;
     public float jump;
+    private int health = 3;
 
     public bool isGrounded = false;
 
@@ -17,12 +19,21 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rBody;
     private BoxCollider2D boxCollider2D;
 
+    private GameObject life;
     public void KillPlayer()
     {
-        Debug.Log("Player killed by enemy");
+        Debug.Log("Player attacked by enemy");
 
         //Destroy player object and play death animation
         //reset the level
+        GameObject.Find("Life" + health).SetActive(false);
+        health--;
+        if (health == 0)
+        {
+            Debug.Log("Player killed by enemy");
+            //play death animation and restart level
+            SceneManager.LoadScene("NewScene");
+        }
     }
 
     private void Awake()
