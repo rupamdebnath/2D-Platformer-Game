@@ -20,6 +20,9 @@ public class PlayerController : MonoBehaviour
     public void KillPlayer()
     {
         Debug.Log("Player killed by enemy");
+
+        //Destroy player object and play death animation
+        //reset the level
     }
 
     private void Awake()
