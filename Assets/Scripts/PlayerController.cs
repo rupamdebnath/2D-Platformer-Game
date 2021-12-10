@@ -15,7 +15,15 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private LayerMask platformMask;
     private Rigidbody2D rBody;
-    private BoxCollider2D boxCollider2D; 
+    private BoxCollider2D boxCollider2D;
+
+    public void KillPlayer()
+    {
+        Debug.Log("Player killed by enemy");
+
+        //Destroy player object and play death animation
+        //reset the level
+    }
 
     private void Awake()
     {
