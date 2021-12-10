@@ -9,6 +9,8 @@ public class EnemyController : MonoBehaviour
 
     public float distance;
 
+    public Animator enemyAnimator;
+
     private bool movingRight = true;
 
     public Transform groundDetection;
@@ -17,16 +19,28 @@ public class EnemyController : MonoBehaviour
         if (collision.gameObject.GetComponent<PlayerController>() != null)
         {
             PlayerController playerController = collision.gameObject.GetComponent<PlayerController>();
+            enemyAnimator.SetBool("PlayerHit", true);
             playerController.KillPlayer();            
         }
-    }   
+
+    }
+
+    public void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.GetComponent<PlayerController>() != null)
+        {
+            enemyAnimator.SetBool("PlayerHit", false);
+        }
+    }
 
     private void Update()
     {
         transform.Translate(Vector2.right * speed * Time.deltaTime);
 
-        RaycastHit2D groundInfo = Physics2D.Raycast(groundDetection.position, Vector2.down, distance);
+        //Player Hit animation
+       
 
+        RaycastHit2D groundInfo = Physics2D.Raycast(groundDetection.position, Vector2.down, distance);
 
         if (groundInfo.collider == false)
         {
