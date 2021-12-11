@@ -77,7 +77,7 @@ public class PlayerController : MonoBehaviour
     {
         float vertical = Input.GetAxisRaw("Jump");
         //vertical player movement
-        if (vertical > 0 && isGrounded)
+        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
             //rBody.AddForce(new Vector2(0, jump), ForceMode2D.Impulse);
             rBody.velocity = Vector3.up * jump;
@@ -129,12 +129,12 @@ public class PlayerController : MonoBehaviour
 
         //Jump code
         //float vertical = Input.GetAxisRaw("Jump");
-        if (vertical > 0)
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             animator.SetBool("Jump", true);
 
         }
-        else
+        else //if (Input.GetKeyUp(KeyCode.Space))
         {
             animator.SetBool("Jump", false);
         }

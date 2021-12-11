@@ -184,7 +184,7 @@ Rigidbody2D:
   m_Mass: 20
   m_LinearDrag: 0
   m_AngularDrag: 0
-  m_GravityScale: 2
+  m_GravityScale: 1
   m_Material: {fileID: 6200000, guid: df7424e685558054e8f24991d248c4fb, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -203,7 +203,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.009673119, y: 1.0058692}
+  m_Offset: {x: -0.009673119, y: 1.0578697}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.42, y: 0.1}
@@ -214,7 +214,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.60888624, y: 2.1173153}
+  m_Size: {x: 0.60888624, y: 2.0133142}
   m_EdgeRadius: 0
 --- !u!95 &1644581382
 Animator:
@@ -250,7 +250,7 @@ MonoBehaviour:
   animator: {fileID: 1644581382}
   scorecontroller: {fileID: 0}
   speed: 6
-  jump: 8
+  jump: 6
   isGrounded: 0
   platformMask:
     serializedVersion: 2
