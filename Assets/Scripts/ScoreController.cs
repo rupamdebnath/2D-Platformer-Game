@@ -23,6 +23,7 @@ public class ScoreController : MonoBehaviour
     public void IncreaseScore(int increment)
     {
         score += increment;
+        Debug.Log("Score" + score);
         RefreshUI();
     }
 
