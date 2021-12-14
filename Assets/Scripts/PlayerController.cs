@@ -146,21 +146,11 @@ public class PlayerController : MonoBehaviour
 
     private bool IsGrounded()
     {
-        //float extraHeightText = 0.01f;
-        //RaycastHit2D raycasthit = Physics2D.Raycast(boxCollider2D.bounds.center, Vector2.down, boxCollider2D.bounds.extents.y + extraHeightText, platformMask);
-        //Color rayColor;
-        //if (raycasthit.collider != null)
-        //{
-        //    rayColor = Color.green;
-        //}
-        //else
-        //{
-        //    rayColor = Color.red;
-        //}
-        //Debug.DrawRay(boxCollider2D.bounds.center, Vector2.down * (boxCollider2D.bounds.extents.y + extraHeightText));
-        //return raycasthit.collider != null;
+        //make the Grounded parameter to true if Is Grounded
         if (transform.Find("GroundCheck").GetComponent<GroundCheck>().isGrounded)
         animator.SetBool("Grounded", true);
+
+        //return the isGrounded variable from this function
         return transform.Find("GroundCheck").GetComponent<GroundCheck>().isGrounded;
     }
 }
