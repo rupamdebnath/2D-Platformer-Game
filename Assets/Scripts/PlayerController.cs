@@ -53,7 +53,7 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         
-    } 
+    }
 
     // Update is called once per frame
     private void Update()
@@ -64,13 +64,14 @@ public class PlayerController : MonoBehaviour
 
         PlayerMovementAnimation(horizontal, vertical);
         MoveCharacter(horizontal, vertical);
-
-        //vertical player movement
-        //if (vertical > 0 && isGrounded)
-        //{
-        //    rBody.AddForce(new Vector2(0, jump), ForceMode2D.Impulse);
-        //}
-
+        if (Input.GetKeyDown(KeyCode.LeftControl) && IsGrounded())
+        {
+            animator.SetBool("Crouch", true);
+        }
+        if (Input.GetKeyUp(KeyCode.LeftControl) && IsGrounded())
+        {
+            animator.SetBool("Crouch", false);
+        }
     }
 
     private void FixedUpdate()
@@ -139,7 +140,7 @@ public class PlayerController : MonoBehaviour
         }
         else //if (Input.GetKeyUp(KeyCode.Space))
         {
-            animator.SetBool("Jump", false);            
+            animator.SetBool("Jump", false);           
 
         }
     }
