@@ -13,7 +13,7 @@ public class PlayerController : MonoBehaviour
     public float jump;
     private int health = 3;
 
-    public bool isGrounded = false;
+    //public bool isGrounded = false;
 
     [SerializeField] private LayerMask platformMask;
     private Rigidbody2D rBody;
@@ -77,29 +77,33 @@ public class PlayerController : MonoBehaviour
     {
         float vertical = Input.GetAxisRaw("Jump");
         //vertical player movement
-        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
+        if ((Input.GetKeyDown(KeyCode.Space) && IsGrounded()) || (vertical > 0 && IsGrounded()))
         {
             //rBody.AddForce(new Vector2(0, jump), ForceMode2D.Impulse);
             rBody.velocity = Vector3.up * jump;
         }
-
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.tag == "Ground")
+        else if(!IsGrounded())
         {
-            isGrounded = true;
+            animator.SetBool("Grounded", false);
         }
+
     }
 
-    private void OnCollisionExit2D(Collision2D collision)
-    {
-        if (collision.gameObject.tag == "Ground")
-        {
-            isGrounded = false;
-        }
-    }
+    //private void OnCollisionEnter2D(Collision2D collision)
+    //{
+    //    if (collision.gameObject.tag == "Ground")
+    //    {
+    //        isGrounded = true;
+    //    }
+    //}
+
+    //private void OnCollisionExit2D(Collision2D collision)
+    //{
+    //    if (collision.gameObject.tag == "Ground")
+    //    {
+    //        isGrounded = false;
+    //    }
+    //}
 
     private void MoveCharacter(float horizontal, float vertical)
     {
@@ -107,7 +111,6 @@ public class PlayerController : MonoBehaviour
         Vector3 position = transform.position;
         position.x += horizontal * speed * Time.deltaTime;
         transform.position = position;
-
     }
 
     private void PlayerMovementAnimation(float horizontal, float vertical)
@@ -129,31 +132,35 @@ public class PlayerController : MonoBehaviour
 
         //Jump code
         //float vertical = Input.GetAxisRaw("Jump");
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (vertical>0)
         {
             animator.SetBool("Jump", true);
-
+            animator.SetBool("Grounded", false);
         }
         else //if (Input.GetKeyUp(KeyCode.Space))
         {
-            animator.SetBool("Jump", false);
+            animator.SetBool("Jump", false);            
+
         }
     }
 
     private bool IsGrounded()
     {
-        float extraHeightText = 0.01f;
-        RaycastHit2D raycasthit = Physics2D.Raycast(boxCollider2D.bounds.center, Vector2.down, boxCollider2D.bounds.extents.y + extraHeightText, platformMask);
-        Color rayColor;
-        if (raycasthit.collider != null)
-        {
-            rayColor = Color.green;
-        }
-        else
-        {
-            rayColor = Color.red;
-        }
-        Debug.DrawRay(boxCollider2D.bounds.center, Vector2.down * (boxCollider2D.bounds.extents.y + extraHeightText));
-        return raycasthit.collider != null;
+        //float extraHeightText = 0.01f;
+        //RaycastHit2D raycasthit = Physics2D.Raycast(boxCollider2D.bounds.center, Vector2.down, boxCollider2D.bounds.extents.y + extraHeightText, platformMask);
+        //Color rayColor;
+        //if (raycasthit.collider != null)
+        //{
+        //    rayColor = Color.green;
+        //}
+        //else
+        //{
+        //    rayColor = Color.red;
+        //}
+        //Debug.DrawRay(boxCollider2D.bounds.center, Vector2.down * (boxCollider2D.bounds.extents.y + extraHeightText));
+        //return raycasthit.collider != null;
+        if (transform.Find("GroundCheck").GetComponent<GroundCheck>().isGrounded)
+        animator.SetBool("Grounded", true);
+        return transform.Find("GroundCheck").GetComponent<GroundCheck>().isGrounded;
     }
 }
