@@ -3081,6 +3081,7 @@ GameObject:
   - component: {fileID: 1728602201}
   - component: {fileID: 1728602203}
   - component: {fileID: 1728602202}
+  - component: {fileID: 1728602204}
   m_Layer: 5
   m_Name: GameOver
   m_TagString: Untagged
@@ -3145,6 +3146,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1728602200}
   m_CullTransparentMesh: 0
+--- !u!114 &1728602204
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1728602200}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbf01f8be0c77a04d848901ef7626283, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  restartButton: {fileID: 397928945}
 --- !u!1001 &1907231521
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3620,6 +3634,10 @@ PrefabInstance:
       propertyPath: scorecontroller
       value: 
       objectReference: {fileID: 1297033272}
+    - target: {fileID: 585606642, guid: 746103849df721444ac9b4c9278af270, type: 3}
+      propertyPath: gameOverController
+      value: 
+      objectReference: {fileID: 1728602204}
     - target: {fileID: 4615237107101695224, guid: 746103849df721444ac9b4c9278af270,
         type: 3}
       propertyPath: m_RootOrder

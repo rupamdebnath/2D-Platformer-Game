@@ -322,6 +322,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fcbc778c0656464f84bb5b4f20dc965, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameOverController: {fileID: 0}
   animator: {fileID: 1644581382}
   scorecontroller: {fileID: 0}
   speed: 5

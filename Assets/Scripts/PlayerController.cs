@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class PlayerController : MonoBehaviour
 {
 
+    public GameOverController gameOverController;
     public Animator animator;
     public ScoreController scorecontroller;
     public float speed;
@@ -32,7 +33,9 @@ public class PlayerController : MonoBehaviour
         {
             Debug.Log("Player killed by enemy");
             //play death animation and restart level
-            SceneManager.LoadScene("NewScene");
+            //SceneManager.LoadScene("NewScene");
+
+            gameOverController.PlayerDied();
         }
     }
 
