@@ -19,6 +19,7 @@ public class GameOverController : MonoBehaviour
     public void PlayerDied()
     {
         gameObject.SetActive(true);
+        GameObject.Find("Player").GetComponent<PlayerController>().enabled = false;
     }
 
     public void ReloadLevel()
