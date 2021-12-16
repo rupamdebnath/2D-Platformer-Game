@@ -47,9 +47,9 @@ public class EnemyController : MonoBehaviour
 
         //Print the collider
         Debug.Log("Hit something: " + groundInfo.collider);
-        if (groundInfo.collider == false)
+        if (!groundInfo.collider)
         {
-            if (movingRight == true)
+            if (movingRight)
             {
                 transform.eulerAngles = new Vector3(0, -180, 0);
                 movingRight = false;

@@ -67,13 +67,16 @@ public class PlayerController : MonoBehaviour
 
         PlayerMovementAnimation(horizontal, vertical);
         MoveCharacter(horizontal, vertical);
-        if (Input.GetKeyDown(KeyCode.LeftControl) && IsGrounded())
+        if (IsGrounded())
         {
-            animator.SetBool("Crouch", true);
-        }
-        if (Input.GetKeyUp(KeyCode.LeftControl) && IsGrounded())
-        {
-            animator.SetBool("Crouch", false);
+            if (Input.GetKey(KeyCode.LeftControl))
+            {
+                animator.SetBool("Crouch", true);
+            }
+            else
+            {
+                animator.SetBool("Crouch", false);
+            }
         }
     }
 
@@ -92,22 +95,6 @@ public class PlayerController : MonoBehaviour
         }
 
     }
-
-    //private void OnCollisionEnter2D(Collision2D collision)
-    //{
-    //    if (collision.gameObject.tag == "Ground")
-    //    {
-    //        isGrounded = true;
-    //    }
-    //}
-
-    //private void OnCollisionExit2D(Collision2D collision)
-    //{
-    //    if (collision.gameObject.tag == "Ground")
-    //    {
-    //        isGrounded = false;
-    //    }
-    //}
 
     private void MoveCharacter(float horizontal, float vertical)
     {
@@ -146,6 +133,7 @@ public class PlayerController : MonoBehaviour
             animator.SetBool("Jump", false);           
 
         }
+
     }
 
     private bool IsGrounded()
