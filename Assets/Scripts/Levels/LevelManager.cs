@@ -9,6 +9,8 @@ public class LevelManager : MonoBehaviour
     private static LevelManager instance;
     public static LevelManager Instance { get { return instance; } }
 
+    private Scene currentScene;
+
     //Awake
     private void Awake()
     {
@@ -23,18 +25,21 @@ public class LevelManager : MonoBehaviour
         }
     }
 
-    public void MarkLevelCompleted()
+    public void MarkLevelComplete()
     {
         //Get current scene and mark it as complete
-        Scene currentScene = SceneManager.GetActiveScene();        
-        SetLevelStatus(currentScene.name, LevelStatus.Completed);        
+        currentScene = SceneManager.GetActiveScene();
+        Debug.Log("Status of scene before completion" + currentScene.name + " is " + GetLevelStatus(currentScene.name));
+
+        SetLevelStatus(currentScene.name, LevelStatus.Completed);
+        Debug.Log("Status of scene after completion" + currentScene.name + " is " + GetLevelStatus(currentScene.name));
     }
 
     //Start
     private void Start()
     {
         if (GetLevelStatus("Level1") == LevelStatus.Locked)
-            SetLevelStatus("Level1", LevelStatus.Unlocked);
+            SetLevelStatus("Level1", LevelStatus.Unlocked);       
         if (GetLevelStatus("Lobby") == LevelStatus.Locked)
             SetLevelStatus("Lobby", LevelStatus.Unlocked);
     }

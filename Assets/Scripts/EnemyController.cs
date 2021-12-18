@@ -42,11 +42,12 @@ public class EnemyController : MonoBehaviour
 
         RaycastHit2D groundInfo = Physics2D.Raycast(groundDetection.position, Vector2.down, distance);
 
-        //Draw the ray
-        Debug.DrawRay(groundDetection.position, Vector2.down * 0.4f, Color.red);
+        ////Draw the ray
+        //Debug.DrawRay(groundDetection.position, Vector2.down * 0.4f, Color.red);
 
-        //Print the collider
-        Debug.Log("Hit something: " + groundInfo.collider);
+        ////Print the collider
+        //Debug.Log("Hit something: " + groundInfo.collider);
+
         if (!groundInfo.collider)
         {
             if (movingRight)

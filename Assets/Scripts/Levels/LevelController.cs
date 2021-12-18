@@ -9,9 +9,9 @@ public class LevelController : MonoBehaviour
     {
         if (collision.gameObject.GetComponent<PlayerController>() != null)
         {
-            Debug.Log("Level Finished by the player");
-            Debug.Log("Run Next Level..........");
-            LevelManager.Instance.MarkLevelCompleted();
+            //Debug.Log("Level Finished by the player");
+            //Debug.Log("Run Next Level..........");
+            LevelManager.Instance.MarkLevelComplete();
         }
     }
 }
