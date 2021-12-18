@@ -11,6 +11,7 @@ public class LevelController : MonoBehaviour
         {
             Debug.Log("Level Finished by the player");
             Debug.Log("Run Next Level..........");
+            LevelManager.Instance.MarkLevelCompleted();
         }
     }
 }

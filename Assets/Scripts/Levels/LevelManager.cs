@@ -1,6 +1,8 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 {
@@ -19,6 +21,13 @@ public class LevelManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    public void MarkLevelCompleted()
+    {
+        //Get current scene and mark it as complete
+        Scene currentScene = SceneManager.GetActiveScene();        
+        SetLevelStatus(currentScene.name, LevelStatus.Completed);        
     }
 
     //Start
