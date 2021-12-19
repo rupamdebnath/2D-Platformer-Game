@@ -7,9 +7,13 @@ using UnityEngine.SceneManagement;
 public class LevelManager : MonoBehaviour
 {
     private static LevelManager instance;
+
+    private LevelLoader levelcomplete;
     public static LevelManager Instance { get { return instance; } }
 
-    private Scene currentScene;
+    public string[] Levels;
+
+    //private Scene currentScene;
 
     //Awake
     private void Awake()
@@ -28,17 +32,26 @@ public class LevelManager : MonoBehaviour
     public void MarkLevelComplete()
     {
         //Get current scene and mark it as complete
-        currentScene = SceneManager.GetActiveScene();
+        Scene currentScene = SceneManager.GetActiveScene();
         SetLevelStatus(currentScene.name, LevelStatus.Completed);        
+
+        //int nextSceneIndex = currentScene.buildIndex + 1;
+        int currentSceneIndex = Array.FindIndex(Levels, level => level == currentScene.name);
+        int nextSceneIndex = currentSceneIndex + 1;
+
+        if (nextSceneIndex < Levels.Length)
+        {
+            SetLevelStatus(Levels[nextSceneIndex], LevelStatus.Unlocked);
+            Debug.Log("Level " + GetLevelStatus(Levels[nextSceneIndex]));
+        }
     }
 
     //Start
     private void Start()
     {
         if (GetLevelStatus("Level1") == LevelStatus.Locked)
-            SetLevelStatus("Level1", LevelStatus.Unlocked);       
-        if (GetLevelStatus("Lobby") == LevelStatus.Locked)
-            SetLevelStatus("Lobby", LevelStatus.Unlocked);
+            SetLevelStatus("Level1", LevelStatus.Unlocked);     
+        SetLevelStatus("Lobby", LevelStatus.Unlocked);
     }
 
     public LevelStatus GetLevelStatus(string level)

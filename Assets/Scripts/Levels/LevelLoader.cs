@@ -10,6 +10,9 @@ public class LevelLoader : MonoBehaviour
 {
     private Button button;
     public string LevelName;
+    private LevelStatus levelStatus;
+
+    //public GameObject LevelComplete;
     //Awake
     void Awake()
     {
@@ -19,7 +22,8 @@ public class LevelLoader : MonoBehaviour
 
     private void OnClick()
     {
-        LevelStatus levelStatus = LevelManager.Instance.GetLevelStatus(LevelName);
+        Debug.Log("Level name:" + LevelName); 
+        levelStatus = LevelManager.Instance.GetLevelStatus(LevelName);
         switch(levelStatus)
         {
             case LevelStatus.Locked:
