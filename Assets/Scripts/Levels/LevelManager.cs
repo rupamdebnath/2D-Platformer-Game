@@ -29,10 +29,7 @@ public class LevelManager : MonoBehaviour
     {
         //Get current scene and mark it as complete
         currentScene = SceneManager.GetActiveScene();
-        Debug.Log("Status of scene before completion" + currentScene.name + " is " + GetLevelStatus(currentScene.name));
-
-        SetLevelStatus(currentScene.name, LevelStatus.Completed);
-        Debug.Log("Status of scene after completion" + currentScene.name + " is " + GetLevelStatus(currentScene.name));
+        SetLevelStatus(currentScene.name, LevelStatus.Completed);        
     }
 
     //Start
