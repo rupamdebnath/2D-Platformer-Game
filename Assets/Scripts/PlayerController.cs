@@ -86,7 +86,6 @@ public class PlayerController : MonoBehaviour
         //vertical player movement
         if ((Input.GetKeyDown(KeyCode.Space) && IsGrounded()) || (vertical > 0 && IsGrounded()))
         {
-            //rBody.AddForce(new Vector2(0, jump), ForceMode2D.Impulse);
             rBody.velocity = Vector3.up * jump;
         }
         else if(!IsGrounded())
@@ -108,27 +107,25 @@ public class PlayerController : MonoBehaviour
     {
         animator.SetFloat("Speed", Mathf.Abs(horizontal));
 
-        //Debug.Log("Speed is" + speed);
         Vector3 scale = transform.localScale;
         if (horizontal < 0)
         {
             scale.x = -1f * (Mathf.Abs(scale.x));
+            
         }
         else if (horizontal > 0)
-        {
-            scale.x = Mathf.Abs(scale.x);
+        {            
+            scale.x = Mathf.Abs(scale.x);            
         }
 
         transform.localScale = scale;
 
-        //Jump code
-        //float vertical = Input.GetAxisRaw("Jump");
         if (vertical>0)
         {
             animator.SetBool("Jump", true);
             animator.SetBool("Grounded", false);
         }
-        else //if (Input.GetKeyUp(KeyCode.Space))
+        else 
         {
             animator.SetBool("Jump", false);           
 

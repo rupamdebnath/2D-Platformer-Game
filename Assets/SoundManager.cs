@@ -34,8 +34,24 @@ public class SoundManager : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
-
+        KeepPlaying(Sounds.GameBGMusic);
     }
+
+    public void KeepPlaying(Sounds _sound)
+    {
+        AudioClip clip = getSoundClip(_sound);
+        if (clip != null)
+        {
+            SoundBGMusic.clip = clip;
+            SoundBGMusic.Play();
+        }
+        else
+        {
+            Debug.Log("No clip found for Sound Type");
+        }
+    }
+
+
 
     public void PlayOnce(Sounds _sound)
     {
@@ -69,6 +85,8 @@ public class SoundType
 public enum Sounds
 {
     ButtonClick,
+    LockedLevel,
     PlayerDeath,
-    PlayerMove
+    PlayerMove,
+    GameBGMusic
 }
