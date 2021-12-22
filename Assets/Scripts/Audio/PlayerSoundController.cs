@@ -15,18 +15,13 @@ public class PlayerSoundController : MonoBehaviour
     private void Update()
     {
         float horizontal = Input.GetAxisRaw("Horizontal");
-        if (horizontal < 0 && playercontroller.IsGrounded())
+        if (horizontal != 0 && playercontroller.IsGrounded())
         {
             Debug.Log("Player audio");
             if (!_audio.isPlaying)
                 SoundManager.Instance.PlayPlayerSound(_audio, Sounds.PlayerMove);
         }
-        else if (horizontal > 0 && playercontroller.IsGrounded())
-        {
-            Debug.Log("Player audio");
-            if (!_audio.isPlaying)
-                SoundManager.Instance.PlayPlayerSound(_audio, Sounds.PlayerMove);
-        }
+
     }
 
 }
