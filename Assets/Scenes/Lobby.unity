@@ -1043,10 +1043,10 @@ MonoBehaviour:
     soundClip: {fileID: 8300000, guid: a4dc23583fb1dc84a89049f88b06efe8, type: 3}
   - soundType: 1
     soundClip: {fileID: 8300000, guid: df6d1af64fdebb04d80a54b27b720509, type: 3}
-  - soundType: 4
+  - soundType: 2
     soundClip: {fileID: 8300000, guid: 0651b56880a11ef45909b779443691aa, type: 3}
-  - soundType: 3
-    soundClip: {fileID: 8300000, guid: 13de3c8b19190eb488622c2982f7e977, type: 3}
+  - soundType: 4
+    soundClip: {fileID: 8300000, guid: ccb3ad8b5906ef14d921491eb8be7e2d, type: 3}
 --- !u!81 &489327790
 AudioListener:
   m_ObjectHideFlags: 0

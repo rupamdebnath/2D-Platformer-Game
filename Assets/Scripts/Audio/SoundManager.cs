@@ -28,6 +28,7 @@ public class SoundManager : MonoBehaviour
         else
         {
             Destroy(gameObject);
+            return;
         }
     }
 
@@ -51,8 +52,6 @@ public class SoundManager : MonoBehaviour
         }
     }
 
-
-
     public void PlayOnce(Sounds _sound)
     {
         AudioClip clip = getSoundClip(_sound);
@@ -73,6 +72,12 @@ public class SoundManager : MonoBehaviour
             return _soundtype.soundClip;
         return null;
     }
+
+    public void PlayPlayerSound(AudioSource source, Sounds _sound)
+    {
+        AudioClip clip = getSoundClip(_sound);
+        source.PlayOneShot(clip);
+    }
 }
 
 [Serializable]
@@ -86,7 +91,9 @@ public enum Sounds
 {
     ButtonClick,
     LockedLevel,
+    GameBGMusic,
     PlayerDeath,
-    PlayerMove,
-    GameBGMusic
+    PlayerMove
 }
+
+
