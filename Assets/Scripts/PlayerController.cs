@@ -12,7 +12,7 @@ public class PlayerController : MonoBehaviour
     public ScoreController scorecontroller;
     public float speed;
     public float jump;
-    private int health = 3;
+    private int health = 3;  
 
     //public bool isGrounded = false;
 
@@ -23,17 +23,14 @@ public class PlayerController : MonoBehaviour
     private GameObject life;
     public void KillPlayer()
     {
-        //Debug.Log("Player attacked by enemy");
-
         //Destroy player object and play death animation
-        //reset the level
+
         GameObject.Find("Life" + health).SetActive(false);
         health--;
         if (health == 0)
         {
             Debug.Log("Player is dead");
-            //play death animation and restart level
-            //SceneManager.LoadScene("NewScene");
+            //play death animation and restart level            
 
             gameOverController.PlayerDied();
         }
@@ -43,7 +40,7 @@ public class PlayerController : MonoBehaviour
     {
         rBody = gameObject.GetComponent<Rigidbody2D>();
         gameObject.GetComponent<SpriteRenderer>();
-        boxCollider2D = gameObject.GetComponent<BoxCollider2D>();
+        boxCollider2D = gameObject.GetComponent<BoxCollider2D>();        
     }
 
     public void PickUpKey()
@@ -86,14 +83,12 @@ public class PlayerController : MonoBehaviour
         //vertical player movement
         if ((Input.GetKeyDown(KeyCode.Space) && IsGrounded()) || (vertical > 0 && IsGrounded()))
         {
-            //rBody.AddForce(new Vector2(0, jump), ForceMode2D.Impulse);
             rBody.velocity = Vector3.up * jump;
         }
         else if(!IsGrounded())
         {
             animator.SetBool("Grounded", false);
         }
-
     }
 
     private void MoveCharacter(float horizontal, float vertical)
@@ -101,42 +96,39 @@ public class PlayerController : MonoBehaviour
         //horizontal player movement
         Vector3 position = transform.position;
         position.x += horizontal * speed * Time.deltaTime;
-        transform.position = position;
+        transform.position = position;        
     }
 
     private void PlayerMovementAnimation(float horizontal, float vertical)
     {
         animator.SetFloat("Speed", Mathf.Abs(horizontal));
 
-        //Debug.Log("Speed is" + speed);
         Vector3 scale = transform.localScale;
         if (horizontal < 0)
-        {
+        {         
             scale.x = -1f * (Mathf.Abs(scale.x));
+            
         }
         else if (horizontal > 0)
-        {
-            scale.x = Mathf.Abs(scale.x);
+        {         
+            scale.x = Mathf.Abs(scale.x);            
         }
 
         transform.localScale = scale;
 
-        //Jump code
-        //float vertical = Input.GetAxisRaw("Jump");
         if (vertical>0)
         {
             animator.SetBool("Jump", true);
             animator.SetBool("Grounded", false);
         }
-        else //if (Input.GetKeyUp(KeyCode.Space))
+        else 
         {
-            animator.SetBool("Jump", false);           
-
+            animator.SetBool("Jump", false);
         }
 
     }
 
-    private bool IsGrounded()
+    public bool IsGrounded()
     {
         //make the Grounded parameter to true if Is Grounded
         if (transform.Find("GroundCheck").GetComponent<GroundCheck>().isGrounded)
