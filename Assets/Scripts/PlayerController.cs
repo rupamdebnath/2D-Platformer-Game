@@ -66,6 +66,8 @@ public class PlayerController : MonoBehaviour
         MoveCharacter(horizontal, vertical);
         if (IsGrounded())
         {
+            animator.SetBool("Grounded", IsGrounded());
+            
             if (Input.GetKey(KeyCode.LeftControl))
             {
                 animator.SetBool("Crouch", true);
@@ -74,6 +76,10 @@ public class PlayerController : MonoBehaviour
             {
                 animator.SetBool("Crouch", false);
             }
+        }
+        else
+        {
+            animator.SetBool("Grounded", IsGrounded());            
         }
     }
 
@@ -84,11 +90,10 @@ public class PlayerController : MonoBehaviour
         if ((Input.GetKeyDown(KeyCode.Space) && IsGrounded()) || (vertical > 0 && IsGrounded()))
         {
             rBody.velocity = Vector3.up * jump;
-        }
-        else if(!IsGrounded())
-        {
             animator.SetBool("Grounded", false);
         }
+        else
+            animator.SetBool("Jump", false);
     }
 
     private void MoveCharacter(float horizontal, float vertical)
@@ -124,17 +129,12 @@ public class PlayerController : MonoBehaviour
         else 
         {
             animator.SetBool("Jump", false);
-        }
+        } 
 
     }
 
     public bool IsGrounded()
-    {
-        //make the Grounded parameter to true if Is Grounded
-        if (transform.Find("GroundCheck").GetComponent<GroundCheck>().isGrounded)
-        animator.SetBool("Grounded", true);
-
-        //return the isGrounded variable from this function
+    {        
         return transform.Find("GroundCheck").GetComponent<GroundCheck>().isGrounded;
     }
 }

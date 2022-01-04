@@ -10,7 +10,7 @@ public class SoundManager : MonoBehaviour
 
     public AudioSource SoundBGMusic;
 
-    public SoundType[] sounds;
+    public UISoundType[] sounds;
 
     public PlayerSoundType[] player_sounds;
 
@@ -37,10 +37,10 @@ public class SoundManager : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
-        KeepPlaying(Sounds.GameBGMusic);
+        KeepPlaying(UISounds.GameBGMusic);
     }
 
-    public void KeepPlaying(Sounds _sound)
+    public void KeepPlaying(UISounds _sound)
     {
         AudioClip clip = getSoundClip(_sound);
         if (clip != null)
@@ -54,7 +54,7 @@ public class SoundManager : MonoBehaviour
         }
     }
 
-    public void PlayOnce(Sounds _sound)
+    public void PlayOnce(UISounds _sound)
     {
         AudioClip clip = getSoundClip(_sound);
         if (clip != null)
@@ -72,9 +72,9 @@ public class SoundManager : MonoBehaviour
         AudioClip clip = getSoundClip(_sound);
         source.PlayOneShot(clip);
     }
-    private AudioClip getSoundClip(Sounds sound)
+    private AudioClip getSoundClip(UISounds sound)
     {
-        SoundType _soundtype =  Array.Find(sounds, s => s.soundType == sound);
+        UISoundType _soundtype =  Array.Find(sounds, s => s.soundType == sound);
         if (_soundtype != null)
             return _soundtype.soundClip;
         return null;
@@ -89,9 +89,9 @@ public class SoundManager : MonoBehaviour
 }
 
 [Serializable]
-public class SoundType
+public class UISoundType
 {
-    public Sounds soundType;
+    public UISounds soundType;
     public AudioClip soundClip;
 }
 [Serializable]
@@ -101,7 +101,7 @@ public class PlayerSoundType
     public AudioClip soundClip;
 }
 
-public enum Sounds
+public enum UISounds
 {
     ButtonClick,
     LockedLevel,
@@ -113,5 +113,3 @@ public enum PlayerSounds
     PlayerDeath,
     PlayerMove
 }
-
-

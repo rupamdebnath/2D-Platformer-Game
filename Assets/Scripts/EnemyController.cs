@@ -37,16 +37,9 @@ public class EnemyController : MonoBehaviour
     {
         transform.Translate(Vector2.right * speed * Time.deltaTime);
 
-        //Player Hit animation
-       
+        //Enemy ground check for turning direction     
 
         RaycastHit2D groundInfo = Physics2D.Raycast(groundDetection.position, Vector2.down, distance);
-
-        ////Draw the ray
-        //Debug.DrawRay(groundDetection.position, Vector2.down * 0.4f, Color.red);
-
-        ////Print the collider
-        //Debug.Log("Hit something: " + groundInfo.collider);
 
         if (!groundInfo.collider)
         {
