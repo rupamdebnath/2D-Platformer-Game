@@ -19,11 +19,13 @@ public class GameOverController : MonoBehaviour
     public void PlayerDied()
     {
         gameObject.SetActive(true);
-        GameObject.Find("Player").GetComponent<PlayerController>().enabled = false;
+        //GameObject.Find("Player").GetComponent<PlayerController>().enabled = false;
+        SoundManager.Instance.PlayOnce(UISounds.GameOver);
     }
 
     public void ReloadLevel()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        SoundManager.Instance.PlayOnce(UISounds.ButtonClick);
     }
 }

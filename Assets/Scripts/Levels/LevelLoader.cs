@@ -27,17 +27,17 @@ public class LevelLoader : MonoBehaviour
         switch(levelStatus)
         {
             case LevelStatus.Locked:
-                SoundManager.Instance.PlayOnce(Sounds.LockedLevel);
+                SoundManager.Instance.PlayOnce(UISounds.LockedLevel);
                 Debug.Log("Can't play this level Until unlocked");
                 break;
 
             case LevelStatus.Unlocked:
-                SoundManager.Instance.PlayOnce(Sounds.ButtonClick);
+                SoundManager.Instance.PlayOnce(UISounds.ButtonClick);
                 SceneManager.LoadScene(LevelName);
                 break;
 
             case LevelStatus.Completed:
-                SoundManager.Instance.PlayOnce(Sounds.ButtonClick);
+                SoundManager.Instance.PlayOnce(UISounds.ButtonClick);
                 SceneManager.LoadScene(LevelName);
                 break;
         }

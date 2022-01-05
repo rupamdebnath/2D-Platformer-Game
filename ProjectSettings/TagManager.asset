@@ -39,6 +39,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Particle
+    uniqueID: 1180103763
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
