@@ -24,8 +24,8 @@ public class PlayerController : MonoBehaviour
     public void KillPlayer()
     {
         //Destroy player object and play death animation
-
-        GameObject.Find("Life" + health).SetActive(false);
+        if (health > 0)
+            GameObject.Find("Life" + health).SetActive(false);
         health--;          
         if (health == 0)
         {
@@ -44,7 +44,7 @@ public class PlayerController : MonoBehaviour
     {
         Debug.Log("Player is dead");
         //play death animation and restart level
-        //
+        GameObject.Find("Player").SetActive(false);
         gameOverController.PlayerDied();
     }
 
