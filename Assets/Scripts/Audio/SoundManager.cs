@@ -106,10 +106,13 @@ public enum UISounds
     ButtonClick,
     LockedLevel,
     GameBGMusic,
+    KeyPickup,
+    GameOver
 }
 
 public enum PlayerSounds
 {
     PlayerDeath,
-    PlayerMove
+    PlayerMove,
+    PlayerHurt
 }

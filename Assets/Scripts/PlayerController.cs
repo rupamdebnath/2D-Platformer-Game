@@ -26,14 +26,26 @@ public class PlayerController : MonoBehaviour
         //Destroy player object and play death animation
 
         GameObject.Find("Life" + health).SetActive(false);
-        health--;
+        health--;          
         if (health == 0)
         {
-            Debug.Log("Player is dead");
-            //play death animation and restart level            
-
-            gameOverController.PlayerDied();
+            SoundManager.Instance.PlayPlayerSound(gameObject.GetComponent<AudioSource>(), PlayerSounds.PlayerDeath);
+            animator.SetTrigger("Death");
+            Invoke("WaitingForDeath", 2f);
         }
+        else
+        {
+            animator.SetTrigger("Hurt");
+            SoundManager.Instance.PlayPlayerSound(gameObject.GetComponent<AudioSource>(), PlayerSounds.PlayerHurt);            
+        }
+    }
+
+    private void WaitingForDeath()
+    {
+        Debug.Log("Player is dead");
+        //play death animation and restart level
+        //
+        gameOverController.PlayerDied();
     }
 
     private void Awake()
@@ -47,12 +59,7 @@ public class PlayerController : MonoBehaviour
     {
         Debug.Log("Player picked up the key");
         scorecontroller.IncreaseScore(10);
-    }
-
-    // Start is called before the first frame update
-    private void Start()
-    {
-        
+        SoundManager.Instance.PlayOnce(UISounds.KeyPickup);
     }
 
     // Update is called once per frame
@@ -130,9 +137,7 @@ public class PlayerController : MonoBehaviour
         {
             animator.SetBool("Jump", false);
         } 
-
     }
-
     public bool IsGrounded()
     {        
         return transform.Find("GroundCheck").GetComponent<GroundCheck>().isGrounded;

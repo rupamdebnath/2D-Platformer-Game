@@ -20,6 +20,7 @@ public class GameOverController : MonoBehaviour
     {
         gameObject.SetActive(true);
         GameObject.Find("Player").GetComponent<PlayerController>().enabled = false;
+        SoundManager.Instance.PlayOnce(UISounds.GameOver);
     }
 
     public void ReloadLevel()

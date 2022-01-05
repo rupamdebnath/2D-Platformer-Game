@@ -1088,11 +1088,17 @@ MonoBehaviour:
     soundClip: {fileID: 8300000, guid: df6d1af64fdebb04d80a54b27b720509, type: 3}
   - soundType: 2
     soundClip: {fileID: 8300000, guid: 0651b56880a11ef45909b779443691aa, type: 3}
+  - soundType: 3
+    soundClip: {fileID: 8300000, guid: fe55e7059b11fec4d86e4b170db1eb7f, type: 3}
+  - soundType: 4
+    soundClip: {fileID: 8300000, guid: 7382680408b25494cb2a8737573dee2e, type: 3}
   player_sounds:
   - soundType: 1
     soundClip: {fileID: 8300000, guid: ccb3ad8b5906ef14d921491eb8be7e2d, type: 3}
   - soundType: 0
-    soundClip: {fileID: 0}
+    soundClip: {fileID: 8300000, guid: 8d76c4a7797e3994eb5a27a04876b1fe, type: 3}
+  - soundType: 2
+    soundClip: {fileID: 8300000, guid: d50f2e0626e662041aa8a2ff5f8ebcc6, type: 3}
 --- !u!81 &489327790
 AudioListener:
   m_ObjectHideFlags: 0
