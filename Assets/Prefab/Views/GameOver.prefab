@@ -361,7 +361,7 @@ GameObject:
   - component: {fileID: 2331479875087661469}
   - component: {fileID: 2331479875087661458}
   - component: {fileID: 2331479875087661459}
-  - component: {fileID: 2331479875087661468}
+  - component: {fileID: 651111959}
   m_Layer: 5
   m_Name: QuitButton
   m_TagString: Untagged
@@ -469,7 +469,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &2331479875087661468
+--- !u!114 &651111959
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

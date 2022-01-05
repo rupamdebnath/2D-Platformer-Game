@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
-
+    public ParticleSystem dust;
     public GameOverController gameOverController;
     public Animator animator;
     public ScoreController scorecontroller;
@@ -96,6 +96,7 @@ public class PlayerController : MonoBehaviour
         //vertical player movement
         if ((Input.GetKeyDown(KeyCode.Space) && IsGrounded()) || (vertical > 0 && IsGrounded()))
         {
+            CreateDust();
             rBody.velocity = Vector3.up * jump;
             animator.SetBool("Grounded", false);
         }
@@ -119,11 +120,12 @@ public class PlayerController : MonoBehaviour
         if (horizontal < 0)
         {         
             scale.x = -1f * (Mathf.Abs(scale.x));
-            
+            CreateDust();
         }
         else if (horizontal > 0)
         {         
-            scale.x = Mathf.Abs(scale.x);            
+            scale.x = Mathf.Abs(scale.x);
+            CreateDust();
         }
 
         transform.localScale = scale;
@@ -141,5 +143,11 @@ public class PlayerController : MonoBehaviour
     public bool IsGrounded()
     {        
         return transform.Find("GroundCheck").GetComponent<GroundCheck>().isGrounded;
+    }
+
+    //particle effect dust
+    void CreateDust()
+    {
+        dust.Play();
     }
 }

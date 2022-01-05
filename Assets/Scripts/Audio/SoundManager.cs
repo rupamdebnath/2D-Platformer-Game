@@ -107,7 +107,8 @@ public enum UISounds
     LockedLevel,
     GameBGMusic,
     KeyPickup,
-    GameOver
+    GameOver,
+    LevelWin
 }
 
 public enum PlayerSounds
